@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translator", "Translator\Translator.csproj", "{9629AE36-B687-49CD-88F7-B972182FDF55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Himesyo.Translation", "Himesyo.Translation\Himesyo.Translation.csproj", "{F11ED948-67C2-46D1-A7AC-FAE7E4D291BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Himesyo.BaiduTranslator", "Himesyo.BaiduTranslator\Himesyo.BaiduTranslator.csproj", "{0226DAD1-BA06-4F39-B17C-64BC5C3D1339}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Himesyo.XmlCommentDocument", "Himesyo.XmlCommentDocument\Himesyo.XmlCommentDocument.csproj", "{6469F5BD-6336-46AB-92A5-F9EB040F9981}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9629AE36-B687-49CD-88F7-B972182FDF55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9629AE36-B687-49CD-88F7-B972182FDF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9629AE36-B687-49CD-88F7-B972182FDF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9629AE36-B687-49CD-88F7-B972182FDF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F11ED948-67C2-46D1-A7AC-FAE7E4D291BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F11ED948-67C2-46D1-A7AC-FAE7E4D291BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F11ED948-67C2-46D1-A7AC-FAE7E4D291BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F11ED948-67C2-46D1-A7AC-FAE7E4D291BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0226DAD1-BA06-4F39-B17C-64BC5C3D1339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0226DAD1-BA06-4F39-B17C-64BC5C3D1339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0226DAD1-BA06-4F39-B17C-64BC5C3D1339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0226DAD1-BA06-4F39-B17C-64BC5C3D1339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6469F5BD-6336-46AB-92A5-F9EB040F9981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6469F5BD-6336-46AB-92A5-F9EB040F9981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6469F5BD-6336-46AB-92A5-F9EB040F9981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6469F5BD-6336-46AB-92A5-F9EB040F9981}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EAC9FD1-C084-4E29-8620-0C5866AF025B}
+	EndGlobalSection
+EndGlobal
