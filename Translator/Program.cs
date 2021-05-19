@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Himesyo.Logger;
 using Himesyo.Translation;
 
 namespace Himesyo.DocumentTranslator
@@ -21,11 +23,40 @@ namespace Himesyo.DocumentTranslator
         {
             Environment.CurrentDirectory = Application.StartupPath;
 
+            AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            Application.ThreadException += Application_ThreadException;
             //AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+
+            LoggerSimple.Init("Logs", "Translator");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
+        }
+
+        private static void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
+        {
+            if (LoggerSimple.CanWrite)
+            {
+                LoggerSimple.WriteError("捕获异常。", e.Exception);
+            }
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            if (LoggerSimple.CanWrite)
+            {
+                LoggerSimple.WriteError("未处理捕获异常。", e.ExceptionObject as Exception);
+            }
+        }
+
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            if (LoggerSimple.CanWrite)
+            {
+                LoggerSimple.WriteError("捕获线程异常。", e.Exception);
+            }
         }
 
         private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
