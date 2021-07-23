@@ -19,9 +19,13 @@ namespace Himesyo.DocumentTranslator
 {
     public partial class FormMain : Form
     {
+        public static readonly string TranslatorTypesPath = "TranslatorTypes";
+        public static readonly string FileTypesPath = "FileTypes";
+
         public static Dictionary<TName, ITranslatorType> TranslatorTypes { get; } = new Dictionary<TName, ITranslatorType>();
-        public static BindingList<ITranslator> Translators { get; } = new BindingList<ITranslator>();
         public static Dictionary<FName, IFileType> FileTypes { get; } = new Dictionary<FName, IFileType>();
+
+        public static BindingList<ITranslator> Translators { get; } = new BindingList<ITranslator>();
         public static DocumentCollection Documents { get; } = new DocumentCollection();
 
         private static Dictionary<int, IFileType> IndexFileType { get; } = new Dictionary<int, IFileType>();
@@ -98,9 +102,9 @@ namespace Himesyo.DocumentTranslator
 
         private void LoadTranslatorTypes()
         {
-            if (Directory.Exists("TranslatorTypes"))
+            if (Directory.Exists(TranslatorTypesPath))
             {
-                foreach (var item in Directory.GetFiles("TranslatorTypes", "*.dll"))
+                foreach (var item in Directory.GetFiles(TranslatorTypesPath, "*.dll"))
                 {
                     try
                     {
@@ -150,9 +154,9 @@ namespace Himesyo.DocumentTranslator
         }
         private void LoadFileTypes()
         {
-            if (Directory.Exists("FileTypes"))
+            if (Directory.Exists(FileTypesPath))
             {
-                foreach (var item in Directory.GetFiles("FileTypes", "*.dll"))
+                foreach (var item in Directory.GetFiles(FileTypesPath, "*.dll"))
                 {
                     try
                     {
@@ -196,6 +200,9 @@ namespace Himesyo.DocumentTranslator
             var select = from type in FileTypes
                          where type.Value.OpenFileFilter != null
                          from filter in type.Value.OpenFileFilter
+                         where filter != null
+                         where filter.Extension == null || !filter.Extension.Contains("|")
+                         where filter.Title == null || !filter.Extension.Contains("|")
                          select new { Filter = $"{filter.Title}|{filter.Extension}", FileType = type.Value };
             //select $"{filter.Title}|{filter.Extension}";
             StringBuilder filterString = new StringBuilder();
@@ -210,9 +217,9 @@ namespace Himesyo.DocumentTranslator
             //FormTranslator form = new FormTranslator();
             //form.ShowDialog();
 
-            Documents.Add(new Document(new TestFile()));
-            Documents.Add(new Document(new TestFile()));
-            Documents.Add(new Document(new TestFile()));
+            Documents.Add(new Document(new TestFile()) { Progress = 0.12 });
+            Documents.Add(new Document(new TestFile()) { Progress = 0.24 });
+            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
             documentBindingSource.DataSource = Documents;
         }
 
@@ -244,12 +251,9 @@ namespace Himesyo.DocumentTranslator
             }
         }
 
-        private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuBtnOpenFile_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-
-            }
+            openFileDialog1.ShowDialog();
         }
     }
 }

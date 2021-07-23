@@ -6,9 +6,9 @@ using Himesyo.Runtime;
 namespace Himesyo.Translation
 {
     /// <summary>
-    /// 表示 <see cref="ITranslatorType"/> 的名称。
+    /// 表示 <see cref="ITranslatorType"/> 的名称。此类不能被继承。
     /// </summary>
-    public class TName
+    public sealed class TName
     {
         /// <summary>
         /// 从指定类型创建名称。
@@ -47,6 +47,7 @@ namespace Himesyo.Translation
 
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             if (obj is TName name)
@@ -55,20 +56,34 @@ namespace Himesyo.Translation
             }
             return false;
         }
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             return TranslatorType.GetHashCode();
         }
+        /// <inheritdoc/>
         public override string ToString()
         {
             return Name;
         }
+        /// <summary>
+        /// 两个 <see cref="TName"/> 对象是否指向相同的 <see cref="ITranslatorType"/> 类型。
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator ==(TName left, TName right)
         {
             if (left is null && right is null) return true;
             if (left is null || right is null) return false;
             return left.TranslatorType == right.TranslatorType;
         }
+        /// <summary>
+        /// 两个 <see cref="TName"/> 对象是否指向不同的 <see cref="ITranslatorType"/> 类型。
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator !=(TName left, TName right)
         {
             if (left is null && right is null) return false;

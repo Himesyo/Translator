@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 
@@ -60,10 +61,26 @@ namespace Himesyo.XmlCommentDocument
         public string FullPath { get; set; }
         public long FileSize { get; set; }
         public long TextLength { get; set; }
+        public string State { get; }
 
         public XmlCommentDocument(XmlDocument document)
         {
 
+        }
+
+        public bool TrySetState(string state)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Init(CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Start(CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }

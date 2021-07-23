@@ -28,18 +28,25 @@ namespace Himesyo.Translation
         /// <param name="type">对象的类型指示此 <see cref="XmlFormatter"/> 可进行序列化。</param>
         public XmlFormatter(Type type)
             : base(type) { }
+        /// <inheritdoc/>
         public XmlFormatter(Type type, XmlRootAttribute root)
             : base(type, root) { }
+        /// <inheritdoc/>
         public XmlFormatter(Type type, Type[] extraTypes)
             : base(type, extraTypes) { }
+        /// <inheritdoc/>
         public XmlFormatter(Type type, XmlAttributeOverrides overrides)
             : base(type, overrides) { }
+        /// <inheritdoc/>
         public XmlFormatter(Type type, string defaultNamespace)
             : base(type, defaultNamespace) { }
+        /// <inheritdoc/>
         public XmlFormatter(Type type, XmlAttributeOverrides overrides, Type[] extraTypes, XmlRootAttribute root, string defaultNamespace)
             : base(type, overrides, extraTypes, root, defaultNamespace) { }
+        /// <inheritdoc/>
         public XmlFormatter(Type type, XmlAttributeOverrides overrides, Type[] extraTypes, XmlRootAttribute root, string defaultNamespace, string location)
             : base(type, overrides, extraTypes, root, defaultNamespace, location) { }
+        /// <inheritdoc/>
         [Obsolete]
         public XmlFormatter(Type type, XmlAttributeOverrides overrides, Type[] extraTypes, XmlRootAttribute root, string defaultNamespace, string location, Evidence evidence)
             : base(type, overrides, extraTypes, root, defaultNamespace, location, evidence) { }

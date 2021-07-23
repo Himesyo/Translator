@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace Himesyo.Translation
 {
+    /// <summary>
+    /// 表示一个翻译器。
+    /// </summary>
     public interface ITranslator
     {
         /// <summary>
