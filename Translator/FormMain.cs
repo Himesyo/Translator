@@ -185,18 +185,8 @@ namespace Himesyo.DocumentTranslator
         {
 
         }
-
-        private void FormMain_Load(object sender, EventArgs e)
+        private void InitFileFilter()
         {
-            LoadTranslatorTypes();
-            LoadTranslators();
-
-            // 注册事件在 LoadTranslators(); 后面。
-            Translators.ListChanged += Translators_ListChanged;
-
-            LoadFileTypes();
-            LoadFiles();
-
             var select = from type in FileTypes
                          where type.Value.OpenFileFilter != null
                          from filter in type.Value.OpenFileFilter
@@ -212,7 +202,25 @@ namespace Himesyo.DocumentTranslator
                 IndexFileType[index++] = item.FileType;
                 filterString.Append(item.Filter).Append('|');
             }
-            openFileDialog1.Filter = filterString.Remove(filterString.Length - 1, 1).ToString();
+            string filterValue = filterString.Remove(filterString.Length - 1, 1).ToString();
+            openFileDialog1.Filter = filterValue;
+        }
+        private void InitEvent()
+        {
+            // 注册事件在 LoadTranslators(); 后面。
+            Translators.ListChanged += Translators_ListChanged;
+            Documents.ListChanged += Documents_ListChanged;
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            LoadTranslatorTypes();
+            LoadTranslators();
+            LoadFileTypes();
+            LoadFiles();
+
+            InitFileFilter();
+            InitEvent();
 
             //FormTranslator form = new FormTranslator();
             //form.ShowDialog();
@@ -220,7 +228,11 @@ namespace Himesyo.DocumentTranslator
             Documents.Add(new Document(new TestFile()) { Progress = 0.12 });
             Documents.Add(new Document(new TestFile()) { Progress = 0.24 });
             Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
-            documentBindingSource.DataSource = Documents;
+            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
+            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
+            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
+            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
+            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
         }
 
         private void Translators_ListChanged(object sender, ListChangedEventArgs e)
@@ -229,6 +241,57 @@ namespace Himesyo.DocumentTranslator
             {
                 ITranslator translator = Translators[e.NewIndex];
                 SaveTranslator(translator);
+            }
+        }
+
+        private void Documents_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            string name;
+            UcFileInfo ucFile;
+            switch (e.ListChangedType)
+            {
+                case ListChangedType.Reset:
+                    ucFileMain.SuspendLayout();
+                    ucFileMain.Controls.Clear();
+                    for (int i = 0; i < Documents.Count; i++)
+                    {
+                        ucFileMain.Controls.Add(CreateUcFileInfo(i));
+                    }
+                    ucFileMain.ResumeLayout(false);
+                    break;
+                case ListChangedType.ItemAdded:
+                    ucFile = CreateUcFileInfo(e.NewIndex);
+                    ucFileMain.Controls.Add(ucFile);
+                    break;
+                case ListChangedType.ItemDeleted:
+                    name = $"ucFile{e.NewIndex}";
+                    ucFileMain.Controls.RemoveByKey(name);
+                    break;
+                case ListChangedType.ItemMoved:
+                    break;
+                case ListChangedType.ItemChanged:
+                    name = $"ucFile{e.NewIndex}";
+                    ucFileMain.Controls.RemoveByKey(name);
+                    ucFile = CreateUcFileInfo(e.NewIndex);
+                    ucFileMain.Controls.Add(ucFile);
+                    ucFileMain.Controls.SetChildIndex(ucFile, e.NewIndex);
+                    break;
+                case ListChangedType.PropertyDescriptorAdded:
+                case ListChangedType.PropertyDescriptorDeleted:
+                case ListChangedType.PropertyDescriptorChanged:
+                    break;
+                default:
+                    break;
+            }
+
+            UcFileInfo CreateUcFileInfo(int index)
+            {
+                string ucName = $"ucFile{index}";
+                UcFileInfo ucFileInfo = new UcFileInfo();
+                ucFileInfo.Name = ucName;
+                ucFileInfo.Index = index;
+                ucFileInfo.Document = Documents[index];
+                return ucFileInfo;
             }
         }
 

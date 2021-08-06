@@ -79,7 +79,7 @@ namespace Himesyo.Translation
             return left.FileType == right.FileType;
         }
         /// <summary>
-        /// 两个 <see cref="FName"/> 对象是否指向相同的 <see cref="IFileType"/> 类型。
+        /// 两个 <see cref="FName"/> 对象是否指向不同的 <see cref="IFileType"/> 类型。
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>

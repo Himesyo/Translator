@@ -30,93 +30,14 @@ namespace Himesyo.DocumentTranslator
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textLengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuBtnOpenFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.documentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.documentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ucFileMain = new Himesyo.DocumentTranslator.UcFileBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameDataGridViewTextBoxColumn,
-            this.fileSizeDataGridViewTextBoxColumn,
-            this.textLengthDataGridViewTextBoxColumn,
-            this.fullPathDataGridViewTextBoxColumn});
-            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView1.DataSource = this.documentBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(876, 634);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.Frozen = true;
-            this.nameDataGridViewTextBoxColumn.HeaderText = "名称";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // fileSizeDataGridViewTextBoxColumn
-            // 
-            this.fileSizeDataGridViewTextBoxColumn.DataPropertyName = "FileSize";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.fileSizeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.fileSizeDataGridViewTextBoxColumn.HeaderText = "文件大小";
-            this.fileSizeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.fileSizeDataGridViewTextBoxColumn.Name = "fileSizeDataGridViewTextBoxColumn";
-            this.fileSizeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fileSizeDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // textLengthDataGridViewTextBoxColumn
-            // 
-            this.textLengthDataGridViewTextBoxColumn.DataPropertyName = "TextLength";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.textLengthDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.textLengthDataGridViewTextBoxColumn.HeaderText = "文档字数";
-            this.textLengthDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.textLengthDataGridViewTextBoxColumn.Name = "textLengthDataGridViewTextBoxColumn";
-            this.textLengthDataGridViewTextBoxColumn.ReadOnly = true;
-            this.textLengthDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // fullPathDataGridViewTextBoxColumn
-            // 
-            this.fullPathDataGridViewTextBoxColumn.DataPropertyName = "FullPath";
-            this.fullPathDataGridViewTextBoxColumn.HeaderText = "完整路径";
-            this.fullPathDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.fullPathDataGridViewTextBoxColumn.Name = "fullPathDataGridViewTextBoxColumn";
-            this.fullPathDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fullPathDataGridViewTextBoxColumn.Width = 500;
             // 
             // contextMenuStrip1
             // 
@@ -124,71 +45,59 @@ namespace Himesyo.DocumentTranslator
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuBtnOpenFile});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 26);
             // 
             // menuBtnOpenFile
             // 
             this.menuBtnOpenFile.Name = "menuBtnOpenFile";
-            this.menuBtnOpenFile.Size = new System.Drawing.Size(180, 22);
+            this.menuBtnOpenFile.Size = new System.Drawing.Size(127, 22);
             this.menuBtnOpenFile.Text = "打开(&O)...";
             this.menuBtnOpenFile.Click += new System.EventHandler(this.menuBtnOpenFile_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // documentBindingSource
             // 
             this.documentBindingSource.DataSource = typeof(Himesyo.DocumentTranslator.Document);
             // 
-            // splitContainer1
+            // ucFileMain
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(1219, 634);
-            this.splitContainer1.SplitterDistance = 876;
-            this.splitContainer1.TabIndex = 1;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            this.ucFileMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucFileMain.Location = new System.Drawing.Point(14, 14);
+            this.ucFileMain.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ucFileMain.Name = "ucFileMain";
+            this.ucFileMain.Size = new System.Drawing.Size(1191, 606);
+            this.ucFileMain.TabIndex = 1;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 634);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.ucFileMain);
             this.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "文档翻译";
             this.Load += new System.EventHandler(this.FormMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.documentBindingSource)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.BindingSource documentBindingSource;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuBtnOpenFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fileSizeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn textLengthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fullPathDataGridViewTextBoxColumn;
+        private UcFileBox ucFileMain;
     }
 }
 
