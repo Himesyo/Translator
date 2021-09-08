@@ -74,37 +74,11 @@ namespace Himesyo.DocumentTranslator
         }
     }
 
-    internal class TestFile : IFile
-    {
-        public FName TypeName { get; }
-        public string Name => "测试";
-        public string FullPath => @"Himesyo\DocumentTranslator\测试.xml";
-        public long FileSize => 3456L;
-        public long TextLength => 1234L;
-
-        public string State { get; private set; }
-
-        public bool TrySetState(string state)
-        {
-            State = state;
-            return true;
-        }
-
-        public Task Init(CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Start(CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public class Document
     {
         [Browsable(false)]
         public IFile File { get; set; }
+
         [DisplayName("名称")]
         public string Name
         {

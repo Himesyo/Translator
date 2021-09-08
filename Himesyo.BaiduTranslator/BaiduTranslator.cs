@@ -25,7 +25,7 @@ namespace Himesyo.BaiduTranslator
           = new Uri(@"https://fanyi-api.baidu.com/api/trans/vip/translate");
 
         [NonSerialized]
-        private Random random = new Random();
+        private readonly Random random = new Random();
 
         [XmlIgnore]
         public TName TypeName => BaiduTranslatorType.TypeName;

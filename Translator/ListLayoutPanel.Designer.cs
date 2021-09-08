@@ -1,7 +1,7 @@
 ﻿
 namespace Himesyo.DocumentTranslator
 {
-    partial class UcFileBox
+    partial class ListLayoutPanel
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -31,15 +31,12 @@ namespace Himesyo.DocumentTranslator
         {
             this.SuspendLayout();
             // 
-            // UcFileBox
+            // ListLayoutPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Name = "UcFileBox";
-            this.Padding = new System.Windows.Forms.Padding(3);
-            this.Size = new System.Drawing.Size(660, 359);
+            this.Name = "ListLayoutPanel";
+            this.Size = new System.Drawing.Size(594, 288);
             this.ResumeLayout(false);
 
         }

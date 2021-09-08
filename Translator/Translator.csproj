@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>0.1.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -67,14 +82,14 @@
     <Compile Include="FormTranslator.Designer.cs">
       <DependentUpon>FormTranslator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UcFileBox.cs">
+    <Compile Include="ListLayoutPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UcFileBox.Designer.cs">
-      <DependentUpon>UcFileBox.cs</DependentUpon>
+    <Compile Include="ListLayoutPanel.Designer.cs">
+      <DependentUpon>ListLayoutPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UcFileInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,6 +102,9 @@
     <EmbeddedResource Include="FormTranslator.resx">
       <DependentUpon>FormTranslator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListLayoutPanel.resx">
+      <DependentUpon>ListLayoutPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -96,13 +114,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UcFileBox.resx">
-      <DependentUpon>UcFileBox.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UcFileInfo.resx">
       <DependentUpon>UcFileInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\Document.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -127,6 +141,18 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

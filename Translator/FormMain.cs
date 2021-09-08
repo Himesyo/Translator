@@ -224,15 +224,6 @@ namespace Himesyo.DocumentTranslator
 
             //FormTranslator form = new FormTranslator();
             //form.ShowDialog();
-
-            Documents.Add(new Document(new TestFile()) { Progress = 0.12 });
-            Documents.Add(new Document(new TestFile()) { Progress = 0.24 });
-            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
-            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
-            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
-            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
-            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
-            Documents.Add(new Document(new TestFile()) { Progress = 0.56 });
         }
 
         private void Translators_ListChanged(object sender, ListChangedEventArgs e)
@@ -291,6 +282,7 @@ namespace Himesyo.DocumentTranslator
                 ucFileInfo.Name = ucName;
                 ucFileInfo.Index = index;
                 ucFileInfo.Document = Documents[index];
+                ucFileInfo.RefreshShow();
                 return ucFileInfo;
             }
         }

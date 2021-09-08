@@ -34,7 +34,7 @@ namespace Himesyo.DocumentTranslator
             this.menuBtnOpenFile = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.documentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ucFileMain = new Himesyo.DocumentTranslator.UcFileBox();
+            this.ucFileMain = new Himesyo.DocumentTranslator.ListLayoutPanel();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -67,8 +67,9 @@ namespace Himesyo.DocumentTranslator
             this.ucFileMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucFileMain.AutoScroll = true;
             this.ucFileMain.Location = new System.Drawing.Point(14, 14);
-            this.ucFileMain.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ucFileMain.Margin = new System.Windows.Forms.Padding(5);
             this.ucFileMain.Name = "ucFileMain";
             this.ucFileMain.Size = new System.Drawing.Size(1191, 606);
             this.ucFileMain.TabIndex = 1;
@@ -81,8 +82,8 @@ namespace Himesyo.DocumentTranslator
             this.Controls.Add(this.ucFileMain);
             this.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FormMain";
+            this.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "文档翻译";
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -97,7 +98,7 @@ namespace Himesyo.DocumentTranslator
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuBtnOpenFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private UcFileBox ucFileMain;
+        private ListLayoutPanel ucFileMain;
     }
 }
 
