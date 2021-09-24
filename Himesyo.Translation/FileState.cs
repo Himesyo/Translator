@@ -10,6 +10,21 @@
         /// <para>Value = "", Name = "未知"</para>
         /// </summary>
         public static FileState None { get; } = new FileState("", "未知");
+        /// <summary>
+        /// 新建。
+        /// <para>Value = "Create", Name = "创建"</para>
+        /// </summary>
+        public static FileState Create { get; } = new FileState("Create", "创建");
+        /// <summary>
+        /// 正在初始化。
+        /// <para>Value = "Init", Name = "初始化"</para>
+        /// </summary>
+        public static FileState Init { get; } = new FileState("Init", "初始化");
+        /// <summary>
+        /// 就绪。
+        /// <para>Value = "Ready", Name = "就绪"</para>
+        /// </summary>
+        public static FileState Ready { get; } = new FileState("Ready", "就绪");
 
 
         /// <summary>

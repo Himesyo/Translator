@@ -34,7 +34,12 @@ namespace Himesyo.XmlCommentDocument
                 XDocument xml = XDocument.Load(fileName);
                 if (xml.Root.Name == "doc")
                 {
-                    XmlCommentDocument result = new XmlCommentDocument(xml);
+                    XmlCommentDocument result = new XmlCommentDocument(xml)
+                    {
+                        FullPath = Path.GetFullPath(fileName),
+                        Name = Path.GetFileName(fileName),
+                        FileSize = new FileInfo(fileName).Length
+                    };
                     file = result;
                     msg = "";
                     return true;
@@ -71,7 +76,7 @@ namespace Himesyo.XmlCommentDocument
         public string FullPath { get; set; }
         public long FileSize { get; set; }
         public long TextLength { get; set; }
-        public FileState State { get; set; }
+        public FileState State { get; set; } = FileState.Create;
 
         public XmlCommentDocument(XDocument document)
         {
@@ -84,26 +89,26 @@ namespace Himesyo.XmlCommentDocument
             return true;
         }
 
-        public Task Init(ActionInfo actionInfo)
+        public async Task InitAsync(ActionInfo actionInfo, InitRunMessage run)
         {
-            actionInfo.ResetResult();
-
-            actionInfo.CompleteSuccess();
-            return Task.CompletedTask;
-        }
-
-        public Task Start(ActionInfo actionInfo)
-        {
-            actionInfo.CompleteSuccess();
-            return Task.CompletedTask;
-        }
-
-        public Task InitAsync(ActionInfo actionInfo, InitRunMessage run)
-        {
-            actionInfo.ResetResult();
-            
-            actionInfo.CompleteSuccess();
-            return Task.CompletedTask;
+            await Task.Run(() =>
+            {
+                State = FileState.Init;
+                XElement assembly = xml.Root.Element("assembly");
+                if (assembly != null)
+                {
+                    string name = assembly.Element("name")?.Value?.Split(',').FirstOrDefault();
+                    Name = name.FormatNull(Name);
+                }
+                foreach (var item in xml.Descendants("member"))
+                {
+                    run.Message = item.Attribute("name")?.Value;
+                    Thread.Sleep(100);
+                }
+                State = FileState.Ready;
+                run.Message = string.Empty;
+                actionInfo.CompleteSuccess();
+            });
         }
 
         public Task StartAsync(ActionInfo actionInfo, InitRunMessage run)

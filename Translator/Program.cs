@@ -80,30 +80,12 @@ namespace Himesyo.DocumentTranslator
         public IFile File { get; set; }
 
         [DisplayName("名称")]
-        public string Name
-        {
-            get
-            {
-                return File.Name;
-            }
-            set
-            {
-
-            }
-        }
+        public string Name => File.Name;
 
         [DisplayName("完整路径")]
-        public string FullPath
-        {
-            get
-            {
-                return File.FullPath;
-            }
-            set
-            {
+        public string FullPath => File.FullPath;
 
-            }
-        }
+        public string State => (File.State ?? FileState.None).Name;
 
         [DisplayName("文件大小")]
         [Description("文件的物理大小。单位字节。")]
@@ -132,6 +114,8 @@ namespace Himesyo.DocumentTranslator
             }
         }
 
+        [DisplayName("进度样式")]
+        public ProgressBarStyle ProgressStyle { get; set; }
         [DisplayName("当前进度")]
         public double Progress { get; set; }
 

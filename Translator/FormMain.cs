@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Himesyo.IO;
+using Himesyo.Linq;
 using Himesyo.Translation;
 
 namespace Himesyo.DocumentTranslator
@@ -253,6 +254,7 @@ namespace Himesyo.DocumentTranslator
                 case ListChangedType.ItemAdded:
                     ucFile = CreateUcFileInfo(e.NewIndex);
                     ucFileMain.Controls.Add(ucFile);
+                    ucFile.Show();
                     break;
                 case ListChangedType.ItemDeleted:
                     name = $"ucFile{e.NewIndex}";
@@ -282,7 +284,6 @@ namespace Himesyo.DocumentTranslator
                 ucFileInfo.Name = ucName;
                 ucFileInfo.Index = index;
                 ucFileInfo.Document = Documents[index];
-                ucFileInfo.RefreshShow();
                 return ucFileInfo;
             }
         }
@@ -291,7 +292,7 @@ namespace Himesyo.DocumentTranslator
         {
             int index = openFileDialog1.FilterIndex;
             IFileType fileType = IndexFileType[index];
-            if (fileType.TryOpen(openFileDialog1.FileName, out var file, out var msg))
+            if (fileType.TryOpen(openFileDialog1.FileName, out var file, out var msg) && file != null)
             {
                 Documents.Add(new Document(file));
             }
@@ -309,6 +310,13 @@ namespace Himesyo.DocumentTranslator
         private void menuBtnOpenFile_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ucFileMain.Controls
+                .OfType<UcFileInfo>()
+                .ForEach(file => file.RenderNext());
         }
     }
 }

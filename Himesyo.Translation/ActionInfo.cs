@@ -9,9 +9,9 @@ namespace Himesyo.Translation
     public class ActionInfo
     {
         /// <summary>
-        /// 取消动作的令牌。
+        /// 取消动作的令牌。默认为 <see cref="CancellationToken.None"/>
         /// </summary>
-        public CancellationToken Token { get; set; }
+        public CancellationToken Token { get; set; } = CancellationToken.None;
 
         /// <summary>
         /// 指示是否成功执行。

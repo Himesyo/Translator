@@ -33,8 +33,9 @@ namespace Himesyo.DocumentTranslator
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuBtnOpenFile = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.documentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.ucFileMain = new Himesyo.DocumentTranslator.ListLayoutPanel();
+            this.documentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -58,9 +59,10 @@ namespace Himesyo.DocumentTranslator
             // 
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // documentBindingSource
+            // timer1
             // 
-            this.documentBindingSource.DataSource = typeof(Himesyo.DocumentTranslator.Document);
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ucFileMain
             // 
@@ -68,11 +70,16 @@ namespace Himesyo.DocumentTranslator
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucFileMain.AutoScroll = true;
+            this.ucFileMain.ContextMenuStrip = this.contextMenuStrip1;
             this.ucFileMain.Location = new System.Drawing.Point(14, 14);
             this.ucFileMain.Margin = new System.Windows.Forms.Padding(5);
             this.ucFileMain.Name = "ucFileMain";
             this.ucFileMain.Size = new System.Drawing.Size(1191, 606);
             this.ucFileMain.TabIndex = 1;
+            // 
+            // documentBindingSource
+            // 
+            this.documentBindingSource.DataSource = typeof(Himesyo.DocumentTranslator.Document);
             // 
             // FormMain
             // 
@@ -99,6 +106,7 @@ namespace Himesyo.DocumentTranslator
         private System.Windows.Forms.ToolStripMenuItem menuBtnOpenFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private ListLayoutPanel ucFileMain;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
